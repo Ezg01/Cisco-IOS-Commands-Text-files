@@ -1,0 +1,24 @@
+conf t
+	hostname YourdeviceName
+	no ip domain-lookup
+	
+enable password Yourpassword
+
+banner motd "Unauthorized access to the xAcme network will be prosecuted."
+	
+line con 0	
+	enable password Yourpassword
+	logging synchronous
+	login
+	
+line vty 0 15
+	password Yourpassword
+	login
+	
+service password-encryption
+exit
+copy run st
+
+sho run
+
+	
